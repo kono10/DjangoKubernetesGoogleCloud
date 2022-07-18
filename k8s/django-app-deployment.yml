@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: django-deployment
+spec:
+  # the number of pods the deployment is going to make
+  replicas: 3
+  # the label of the pods the deployment is supposed to control
+  selector:
+    matchLabels:
+      component: web
+  # deployments use templates to create pods
+  # pod template
+  template:
+    metadata:
+      labels:
+        # services will route traffic to every pod with the label component: web
+        component: web
+    spec:
+      containers:
+        # list of containers this pod is supposed to run
+        - name: django-app
+          image: novskytech/djangoproject
+          ports:
+            - containerPort: 8000
+          env:
+            # env variable that gets passed to the container 
+            # when it is created inside of the pod
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  # name of the secret
+                  # a single secret can have many key value pairs
+                  name: secret-key
+                  key: SECRET_KEY
