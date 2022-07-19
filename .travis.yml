@@ -12,6 +12,9 @@ before_install:
   - gcloud components update kubectl
   # tell sdk who we are and give it access to our account
   - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project django-k8s-356722
+  - gcloud config set compute/zone us-central1-c
+  - gcloud container clusters get-credentials django-k8s
 
 install:
   - pip install -r myproject/requirements.txt
@@ -26,8 +29,10 @@ after_success:
   - docker push novskytech/djangoproject:k8s
 
 deploy:
+  provider: script
+  script: bash ./deploy.sh
   on:
-    branch: main
+    brach: master
 
 after_deploy:
   - echo "======== done deploying !!!! ========"

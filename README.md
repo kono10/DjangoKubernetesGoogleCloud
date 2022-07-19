@@ -1,5 +1,7 @@
 # Django App In K8s Cluseter
 
+`https://console.cloud.google.com/welcome?project=fluted-nation-340519`
+
 ## Notes For Google Cloud
 
 ## Encrypt
