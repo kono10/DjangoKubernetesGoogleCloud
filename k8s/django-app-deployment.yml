@@ -20,7 +20,7 @@ spec:
       containers:
         # list of containers this pod is supposed to run
         - name: django-app
-          image: novskytech/djangoproject
+          image: novskytech/djangoproject:k8s
           ports:
             - containerPort: 8000
           env:
