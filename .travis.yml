@@ -34,7 +34,7 @@ deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    brach: master
+    brach: main
 
 after_deploy:
   - echo "======== done deploying !!!! ========"
