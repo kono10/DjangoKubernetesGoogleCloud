@@ -28,10 +28,7 @@ script:
   - python myproject/manage.py test myapp
 
 after_success:
-  - python myproject/manage.py collecstatic
-  - docker build -t novskytech/djangoproject ./myproject --no-cache
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push novskytech/djangoproject:k8s
+  - python myproject/manage.py collectstatic
 
 deploy:
   provider: script
