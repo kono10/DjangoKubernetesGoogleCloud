@@ -71,3 +71,7 @@ travis login --github-token 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 --com
 travis encrypt-file service-account.json -r kono10/DjangoKubernetesGoogleCloud --com
 ```
 
+
+# Setting UP Ingress to Test Locally
+
+https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
